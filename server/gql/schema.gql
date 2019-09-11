@@ -1,0 +1,23 @@
+type Query {
+    todos: [Todo]
+    getTodos(pager: Int): [Todo],
+    getTodo(id: String): Todo,
+}
+
+type Mutation {
+    addTodo(todo: TodoInput): Todo
+}
+
+input TodoInput {
+    text: String
+}
+
+type Todo {
+    text: String!
+    id: String
+
+}
+
+type Category {
+    name: String
+}
