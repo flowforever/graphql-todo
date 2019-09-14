@@ -1,7 +1,9 @@
 type Query {
-    todos: [Todo]
-    getTodos(pager: Int): [Todo],
+    getTodoList(pager: Int): [Todo],
     getTodo(id: String): Todo,
+
+    getCategoryList: [Category]
+
 }
 
 type Mutation {
@@ -13,11 +15,16 @@ input TodoInput {
 }
 
 type Todo {
+    "Text Field"
     text: String!
     id: String
-
 }
 
 type Category {
+    id: String
     name: String
+}
+
+type Subscription {
+    newTodo: Todo
 }
