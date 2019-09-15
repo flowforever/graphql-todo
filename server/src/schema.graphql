@@ -1,7 +1,13 @@
+scalar CustomUniqID
+
 type Query {
+    "查询 Todo 列表"
     getTodoList(pager: Int): [Todo],
+
+    "获取Todo 详情"
     getTodo(id: String): Todo,
 
+    "获取Todo分类"
     getCategoryList: [Category]
 
 }
@@ -15,9 +21,10 @@ input TodoInput {
 }
 
 type Todo {
-    "Text Field"
+    "Text Field Todo内容"
     text: String!
     id: String
+    uniqID: CustomUniqID
 }
 
 type Category {
@@ -27,4 +34,15 @@ type Category {
 
 type Subscription {
     newTodo: Todo
+}
+
+# 该节点可以不定义
+schema {
+    # 可以省略，只要名字默认为Query
+    query: Query
+
+    # 可以省略，只要名字默认为Mutation
+    mutation: Mutation
+
+    subscription: Subscription
 }
