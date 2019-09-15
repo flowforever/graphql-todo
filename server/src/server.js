@@ -10,6 +10,28 @@ const typeDefs = gql(
     fs.readFileSync(path.resolve(__dirname, './schema.graphql'), 'utf8').toString()
 );
 
+const resolvers = {
+    Query: {
+        getTodoList,
+        getTodo,
+        getCategoryList,
+    },
+    Mutation: {
+        addTodo,
+        removeTodo,
+    },
+    Subscription: {
+        newTodo: {
+            subscribe: () => pubSub.asyncIterator([NEW_TODO_PUBSUB_KEY])
+        }
+    }
+};
+
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+});
+
 let todoList = [
     { text: 'ok 1', id: 'id1', categoryId: '1' },
     { text: 'ok 1.1', id: 'id1.1', categoryId: '1' },
@@ -52,26 +74,6 @@ async function getCategoryList(obj, args, context, info) {
     console.log(info.operation)
 }
 
-const resolvers = {
-    Query: {
-        getTodoList,
-        getTodo,
-        getCategoryList,
-    },
-    Mutation: {
-        addTodo,
-        removeTodo,
-    },
-    Subscription: {
-        newTodo: {
-            subscribe: () => pubSub.asyncIterator([NEW_TODO_PUBSUB_KEY])
-        }
-    }
-};
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-});
 
 module.exports = server;
