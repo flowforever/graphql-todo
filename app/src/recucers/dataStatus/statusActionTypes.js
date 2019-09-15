@@ -1,0 +1,3 @@
+export const STATUS_INITIAL = 'STATUS_INITIAL';
+export const STATUS_DONE = 'STATUS_DONE';
+export const STATUS_LOADING = 'STATUS_LOADING';

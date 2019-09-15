@@ -10,7 +10,7 @@ const typeDefs = gql(
     fs.readFileSync(path.resolve(__dirname, './schema.graphql'), 'utf8').toString()
 );
 
-const todoList = [
+let todoList = [
     { text: 'ok 1', id: 'id1', categoryId: '1' },
     { text: 'ok 1.1', id: 'id1.1', categoryId: '1' },
     { text: 'ok 2', id: 'id2', categoryId: '2' },
@@ -37,10 +37,15 @@ async function addTodo(_, {todo}) {
         id: `id-${Math.random()}-${Date.now()}`,
         text: todo.text,
         date: new Date(),
-    }
+    };
     todoList.push(newTodo);
     pubSub.publish(NEW_TODO_PUBSUB_KEY, { newTodo: { todo } });
-    return todo;
+    return newTodo;
+}
+
+async function removeTodo(_, {id}) {
+    todoList = todoList.filter(o => o.id !== id);
+    return true;
 }
 
 async function getCategoryList(obj, args, context, info) {
@@ -55,6 +60,7 @@ const resolvers = {
     },
     Mutation: {
         addTodo,
+        removeTodo,
     },
     Subscription: {
         newTodo: {

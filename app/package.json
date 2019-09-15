@@ -17,7 +17,9 @@
     "graphql-tag": "^2.10.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "antd": "^3.15.0",
+    "lodash": "^4.17.11"
   },
   "eslintConfig": {
     "extends": "react-app"
