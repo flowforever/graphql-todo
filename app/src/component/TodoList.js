@@ -10,7 +10,7 @@ export const TodoList = ({ newTodoEditor }) => {
     const { state: { todoStore }, dispatch } = useRootStore();
 
     const TODO_LIST_QUERY = gql`
-        {
+        query GET_TODO_LIST {
             todos: getTodoList(pager: 1) {
                 id,
                 text,
