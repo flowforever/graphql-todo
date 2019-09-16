@@ -39,12 +39,6 @@ let todoList = [
     { text: 'ok 3', id: 'id3', categoryId: '3' },
 ];
 
-const catgoryList = [
-    { id: '1', name: 'category1' },
-    { id: '2', name: 'category2' },
-    { id: '3', name: 'category3' },
-];
-
 async function getTodoList() {
     return todoList;
 }
