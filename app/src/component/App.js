@@ -4,7 +4,7 @@ import {RootStoreContextProvider} from "../stores";
 import {NewTodo} from "./NewTodo";
 
 import {ApolloProvider} from '@apollo/react-hooks';
-import {getClient} from "../gql/getClient";
+import {getClient} from "../functions/getClient";
 
 export function App({}) {
     return (
