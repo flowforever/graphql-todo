@@ -8,7 +8,7 @@ npm start
 # visit http://localhost:9002/graphql
 ```
 
-# start client
+# start app
 ```
 cd client
 npm start
